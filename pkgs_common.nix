@@ -24,6 +24,9 @@
       btop
       font-awesome_7
       tmux
+      bash
+      git
+      vim
 
       cabal-install
       (haskellPackages.ghcWithPackages( hp: [ hp.tidal ] )) # this worked
