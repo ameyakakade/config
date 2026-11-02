@@ -9,34 +9,9 @@
 
   outputs = inputs@{ self, nix-darwin, nixpkgs }:
   let
-    configuration = { pkgs, ... }: {
+    configuration = { pkgs, config, lib, ... }: rec {
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
-      environment.systemPackages =
-        with pkgs ;[
-          neovim
-          rmpc
-          ffmpeg
-          fzf
-          mpd
-          mpc
-          ripgrep
-          wget
-          yt-dlp
-          aerospace
-          zed-editor
-          mpv
-          scrcpy
-          mpd
-          autoraise
-          fastfetch
-
-          # haskell
-          ghc
-          cabal-install
-          hlint
-        ];
-
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
 
@@ -62,17 +37,10 @@
         shell = pkgs.fish;
       };
 
+      system.primaryUser = "ameya";
+
       # use fingerprint for sudo
       security.pam.services.sudo_local.touchIdAuth = true;
-
-#      services.mpd = {
-#        enable = true;
-#        settings = {
-#          music_directory = "home/Music/Songs";
-#          # must specify one or more audio_output blocks in order to play audio!
-#          # (e.g. ALSA, PulseAudio, PipeWire), see next sections
-#        };
-#      };
 
     };
   in
@@ -80,7 +48,7 @@
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#simple
     darwinConfigurations."ameya" = nix-darwin.lib.darwinSystem {
-      modules = [ configuration ];
+      modules = [ configuration ./pkgs_darwin.nix ./pkgs_common.nix ];
     };
   };
 }
