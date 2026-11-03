@@ -27,6 +27,7 @@
       bash
       git
       vim
+      cloc
 
       cabal-install
       (haskellPackages.ghcWithPackages( hp: [ hp.tidal ] )) # this worked
