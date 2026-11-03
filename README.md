@@ -1,4 +1,4 @@
-# Nix config
+# Nix config flake
 for both NixOS and MacOS through nix-darwin.
 Probably has numerous flaws, beware.
 
