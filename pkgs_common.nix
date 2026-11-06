@@ -28,6 +28,7 @@
       git
       vim
       cloc
+      exiftool
 
       cabal-install
       (haskellPackages.ghcWithPackages( hp: [ hp.tidal ] )) # this worked
