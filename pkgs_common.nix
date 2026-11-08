@@ -29,6 +29,7 @@
       vim
       cloc
       exiftool
+      clojure
 
       cabal-install
       (haskellPackages.ghcWithPackages( hp: [ hp.tidal ] )) # this worked
