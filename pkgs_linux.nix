@@ -10,5 +10,6 @@
       alsa-utils
       docker
       docker-compose
+      lan-mouse
     ];
 }
