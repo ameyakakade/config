@@ -31,6 +31,7 @@
       exiftool
 
       cabal-install
+      haskell-language-server
       (haskellPackages.ghcWithPackages( hp: [ hp.tidal ] )) # this worked
     ];
 }
